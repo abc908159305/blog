@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:include="include/header::html('博客后台管理')"></head>
+<body>
+<div th:replace="include/infomation::html"></div>
+<div th:replace="include/navigator::html"></div>
+<script>
+    $(function () {
+        var data4Vue = {
+            uri: 'blogs',
+            beans: [],
+            bean: {},
+            ipage: {}
+        };
+        var vue = new Vue({
+            el: '.workingArea',
+            data: data4Vue,
+            mounted: function () {//渲染后调用
+                this.list(0);
+            },
+            methods: {
+                list: function (start) {
+                    var url = this.uri + "?start=" + start;
+                    axios.get(url).then(function (response) {
+                        vue.ipage = response.data;
+                        vue.beans = response.data.records;
+                    });
+                },
+                jump:function (flag) {
+                    if (flag == 'pre'){
+                        this.list(this.ipage.current-1);
+                    }
+                    if (flag == 'next'){
+                        this.list(this.ipage.current+1);
+                    }
+                }
+            }
+        });
+    });
+</script>
+<div class="workingArea">
+    <div class="allDiv">
+        <ul class="blogsDiv">
+            <li  v-for="bean in beans">
+                <a :href="'blogs/' + bean.id">{{bean.title}}</a>
+                <p>{{bean.content}}</p>
+                <span>文章发布于{{bean.publishtime}}</span>
+            </li>
+            <div th:replace="include/page::html"></div>
+        </ul>
+        <div class="topsDiv">
+            <div class="topfont"><p>置顶</p></div>
+            <ul v-for="bean in beans">
+                <a>{{bean.title}}</a>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="footer" th:replace="include/footer::html"></div>
+</body>
+</html>

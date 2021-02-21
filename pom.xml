@@ -49,13 +49,13 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.0.1</version>
+            <version>3.4.0</version>
         </dependency>
         <!--mybatis-plus代码生成器-->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
-            <version>3.0.1</version>
+            <version>3.4.0</version>
         </dependency>
         <!-- redis -->
         <dependency>
@@ -83,7 +83,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.21</version>
+            <version>8.0.19</version>
         </dependency>
         <!-- commons-lang -->
         <dependency>
@@ -102,6 +102,15 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <scope>compile</scope>
+        </dependency>
+        <!--json，序列化使用-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-json</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
         </dependency>
     </dependencies>
 

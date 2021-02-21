@@ -1,0 +1,15 @@
+<div class="pageDiv" th:fragment="html">
+    <nav>
+        <ul class="pagination">
+<!--			<li>-->
+<!--				<p>{{ipage.current}}</p>/<p>{{ipage.total}}</p>-->
+<!--			</li>-->
+            <li v-show="ipage.current > 1">
+                <a href="#nowhere" @click="jump('pre')">上一页</a>
+            </li>
+            <li v-show="ipage.total/ipage.size > ipage.current">
+                <a href="#nowhere" @click="jump('next')">下一页</a>
+            </li>
+        </ul>
+    </nav>
+</div>
